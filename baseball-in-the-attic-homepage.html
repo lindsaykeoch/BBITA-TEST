@@ -9,30 +9,32 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:      #fffaec;
-      --cream-card: #f4efe2;
-      --dark:       #1d1f1f;
-      --dark-foot:  #37393a;
-      --banner-bg:  #86a9ba;
-      --muted:      #d2cfc3;
-      --font-serif:   'Merriweather', Georgia, serif;
-      --font-heading: Georgia, 'Times New Roman', serif;
-      --font-hero:    'Barlow Condensed', 'Arial Narrow', sans-serif;
-      --font-btn:     'Lexend', sans-serif;
-      --font-ui:      'Poppins', sans-serif;
+      --cream:       #fffaec;
+      --cream-card:  #f4efe2;
+      --dark:        #1d1f1f;
+      --dark-foot:   #37393a;
+      --banner-bg:   #86a9ba;
+      --muted:       #d2cfc3;
+      --hero-cream:  #eae0c8;
+
+      /* fonts */
+      --f-serif:   'Merriweather', Georgia, serif;
+      --f-head:    'Hoefler Text', Palatino, 'Book Antiqua', Georgia, serif;
+      --f-hero:    'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+      --f-btn:     'Lexend', sans-serif;
+      --f-ui:      'Poppins', sans-serif;
     }
 
     body {
       background: var(--cream);
       color: var(--dark);
-      font-family: var(--font-serif);
+      font-family: var(--f-serif);
       overflow-x: hidden;
     }
-
     img { display: block; max-width: 100%; }
     a   { color: inherit; text-decoration: none; }
 
-    /* ─── TOP INFO BAR ─── */
+    /* ── TOP BAR ─────────────────────────────────────────────── */
     .top-bar {
       background: var(--dark);
       color: #fff;
@@ -40,23 +42,22 @@
       align-items: center;
       justify-content: space-between;
       padding: 12px 53px;
-      font-family: var(--font-serif);
+      font-family: var(--f-serif);
       font-size: 16px;
       letter-spacing: -0.03em;
       line-height: 1.3;
-      position: relative;
-      z-index: 30;
     }
     .top-bar em { font-style: italic; font-weight: 900; }
     .top-bar-right { display: flex; align-items: center; gap: 28px; }
-    .top-bar-right img { height: 24px; }
+    .top-bar-right span { white-space: nowrap; }
+    .top-bar-right img { height: 26px; }
 
-    /* ─── NAVIGATION ─── */
+    /* ── NAV ─────────────────────────────────────────────────── */
     .site-nav {
       background: var(--dark);
       display: grid;
       grid-template-columns: 1fr auto 1fr;
-      align-items: center;
+      align-items: end;
       padding: 0 135px 17px;
       position: relative;
       z-index: 20;
@@ -64,16 +65,21 @@
     .nav-links {
       display: flex;
       gap: 60px;
-      font-family: var(--font-serif);
+      font-family: var(--f-serif);
       font-size: 16px;
       color: #fff;
       letter-spacing: -0.03em;
       white-space: nowrap;
       line-height: 1.3;
+      padding-bottom: 4px;
     }
     .nav-links-right { justify-content: flex-end; }
-    .nav-links a:hover { opacity: 0.75; }
+    .nav-links a:hover { opacity: 0.7; }
 
+    .nav-logo-wrap {
+      display: flex;
+      justify-content: center;
+    }
     .nav-logo-box {
       background: var(--cream-card);
       border: 3px solid var(--dark);
@@ -88,13 +94,9 @@
       margin-top: -20px;
       margin-bottom: -110px;
     }
-    .nav-logo-box img {
-      width: 244px;
-      height: 174px;
-      object-fit: contain;
-    }
+    .nav-logo-box img { width: 244px; height: 174px; object-fit: contain; }
 
-    /* ─── BANNER ─── */
+    /* ── BANNER ──────────────────────────────────────────────── */
     .site-banner {
       background: var(--banner-bg);
       display: flex;
@@ -102,22 +104,16 @@
       justify-content: center;
       gap: 40px;
       height: 40px;
-      font-family: var(--font-serif);
+      font-family: var(--f-serif);
       font-size: 20px;
       color: var(--dark);
       letter-spacing: -0.03em;
-      line-height: 1.3;
       position: relative;
       z-index: 10;
     }
-    .banner-dot {
-      width: 8px; height: 8px;
-      background: var(--dark);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
+    .banner-dot { width: 8px; height: 8px; background: var(--dark); border-radius: 50%; flex-shrink: 0; }
 
-    /* ─── PAGE BORDER ─── */
+    /* ── PAGE BORDER ─────────────────────────────────────────── */
     .page-border {
       border: 3px solid var(--dark);
       margin: 0 20px;
@@ -125,149 +121,104 @@
       overflow: hidden;
     }
 
-    /* ─── PAPER TEXTURE ─── */
-    .paper-texture {
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 820px;
+      overflow: hidden;
+    }
+    /* Dark + cream panels behind hero */
+    .hero-panels {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 876px;
+      display: flex;
+      gap: 20px;
+    }
+    .hero-panel-dark  { flex: 1; background: var(--dark); }
+    .hero-panel-cream { width: 605px; flex-shrink: 0; background: var(--hero-cream); mix-blend-mode: multiply; }
+
+    /* Paper texture overlay (top portion) */
+    .paper-top {
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 28%;
       mix-blend-mode: luminosity;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
       overflow: hidden;
     }
-    .paper-texture img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.6;
-    }
-    .paper-texture::after {
+    .paper-top img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+    .paper-top::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(255,250,236,0), #fffaec);
+      background: linear-gradient(to bottom, rgba(255,250,236,0), var(--cream));
     }
 
-    /* ─── HERO ─── */
-    .hero {
-      position: relative;
-      min-height: 820px;
-      display: flex;
-      overflow: hidden;
-    }
-    .hero-bg {
+    /* Hero memorabilia image (right side, rotated) */
+    .hero-img-wrap {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
-      display: flex;
-      gap: 20px;
-      height: 876px;
-    }
-    .hero-bg-dark { flex: 1; background: var(--dark); }
-    .hero-bg-cream {
-      width: 605px;
-      flex-shrink: 0;
-      background: var(--cream-card);
-      mix-blend-mode: multiply;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 40px 124px 100px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 1200px;
-    }
-    .hero-label {
-      font-family: var(--font-serif);
-      font-size: 28px;
-      color: var(--dark);
-      letter-spacing: -0.03em;
-      line-height: 1.83;
-    }
-    .hero-heading-wrap {
-      padding: 124px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-    .hero-heading {
-      font-family: var(--font-hero);
-      font-size: clamp(52px, 6.5vw, 117px);
-      font-weight: 900;
-      line-height: 0.97;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: -0.03em;
-    }
-    .hero-subtext {
-      font-family: var(--font-serif);
-      font-size: 28px;
-      line-height: 1.83;
-      color: var(--muted);
-      max-width: 1000px;
-    }
-    .hero-image-wrap {
-      position: absolute;
-      right: -5%;
+      right: -6%;
       top: 50%;
       transform: translateY(-50%);
-      width: 52%;
+      width: 53%;
       z-index: 2;
     }
-    .hero-image-wrap img {
+    .hero-img-wrap img {
       width: 100%;
       transform: rotate(19deg);
       filter:
         drop-shadow(0px 8px 18px rgba(0,0,0,0.39))
         drop-shadow(0px 33px 33px rgba(0,0,0,0.34))
-        drop-shadow(0px 75px 45px rgba(0,0,0,0.20));
+        drop-shadow(0px 75px 45px rgba(0,0,0,0.20))
+        drop-shadow(0px 134px 53px rgba(0,0,0,0.06));
     }
 
-    /* ─── FLOATING DECOR ─── */
-    .decor-baseball-card {
-      position: absolute;
-      top: -290px; left: -468px;
-      width: 1112px;
+    /* Hero text content */
+    .hero-content {
+      position: relative;
       z-index: 3;
-      transform: rotate(-10.52deg);
-      filter:
-        drop-shadow(0px 8px 18px rgba(0,0,0,0.39))
-        drop-shadow(0px 33px 33px rgba(0,0,0,0.34));
-      pointer-events: none;
+      padding: 40px 124px 100px;
+      max-width: 1360px;
     }
-    .decor-yankees {
-      position: absolute;
-      right: -50px;
-      z-index: 3;
-      width: 570px;
-      transform: rotate(-24deg);
-      pointer-events: none;
-    }
-
-    /* ─── SHARED ─── */
-    .section-heading {
-      font-family: var(--font-heading);
-      font-size: clamp(36px, 4.5vw, 80px);
+    .hero-label {
+      font-family: var(--f-serif);
+      font-size: 28px;
+      color: var(--dark);
       letter-spacing: -0.03em;
-      line-height: 1.16;
-      color: var(--dark);
-    }
-    .section-subtext {
-      font-family: var(--font-serif);
-      font-size: 24px;
       line-height: 1.83;
-      color: var(--dark);
     }
+    .hero-heading-wrap { padding: 124px 0; display: flex; flex-direction: column; gap: 32px; }
+    .hero-heading {
+      font-family: var(--f-hero);
+      font-size: clamp(54px, 6.1vw, 117px);
+      font-weight: 900;
+      line-height: 0.97;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      max-width: 1200px;
+    }
+    .hero-subtext {
+      font-family: var(--f-serif);
+      font-size: 28px;
+      line-height: 1.83;
+      color: var(--muted);
+      max-width: 1000px;
+    }
+
+    /* ── SHARED ──────────────────────────────────────────────── */
     .btn-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 60px;
       height: 72px;
+      padding: 10px 60px;
       border: 3px solid var(--dark);
       border-radius: 37.5px;
       background: #fff;
-      font-family: var(--font-btn);
+      font-family: var(--f-btn);
       font-size: 24px;
       font-weight: 700;
       color: var(--dark);
@@ -275,13 +226,26 @@
       text-transform: uppercase;
       cursor: pointer;
       white-space: nowrap;
-      align-self: flex-start;
     }
     .btn-pill:hover { background: var(--cream-card); }
-    .divider-line { border: none; border-top: 2px solid var(--dark); width: 100%; }
 
-    /* ─── CONTENT WRAPPER ─── */
-    .content-wrapper {
+    .sec-heading {
+      font-family: var(--f-head);
+      font-size: clamp(36px, 4.2vw, 80px);
+      letter-spacing: -0.03em;
+      line-height: 1.16;
+      color: var(--dark);
+    }
+    .sec-body {
+      font-family: var(--f-serif);
+      font-size: 24px;
+      line-height: 1.83;
+      color: var(--dark);
+    }
+    hr.rule { border: none; border-top: 3px solid var(--dark); }
+
+    /* ── CONTENT WRAPPER ─────────────────────────────────────── */
+    .content-wrap {
       position: relative;
       z-index: 1;
       display: flex;
@@ -290,118 +254,91 @@
       padding: 0 124px;
     }
 
-    /* ─── JOURNEY ─── */
-    .journey { padding-top: 120px; }
-    .journey > h2 { text-align: center; margin-bottom: 80px; }
-    .journey-inner {
-      display: flex;
-      gap: 90px;
-      align-items: flex-start;
-      padding: 0 120px;
-    }
-    .journey-photos-col {
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-    }
+    /* ── JOURNEY ─────────────────────────────────────────────── */
+    .journey { padding-top: 120px; display: flex; flex-direction: column; gap: 80px; }
+    .journey-inner { display: flex; gap: 90px; align-items: flex-start; padding: 0 120px; }
+
+    /* Photo stack */
+    .photo-col { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 40px; }
     .photo-stack {
       position: relative;
       width: 487px;
       height: 600px;
     }
-    .photo-stack img { position: absolute; object-fit: cover; }
-    .photo-stack .p4 {
+    .photo-stack > * { position: absolute; object-fit: cover; }
+    /* Layer order: background card (white) → p1 → p2 → p3 (top) */
+    .ps-bg {
       width: 388px; height: 528px;
       top: 0; left: 0;
       transform: rotate(-1.77deg);
+      background: #faf6ed;
       box-shadow: 0 0 18px rgba(0,0,0,0.25);
-      z-index: 1;
     }
-    .photo-stack .p1 {
+    .ps-1 {
       width: 377px; height: 471px;
       top: 50px; left: 11px;
       transform: rotate(-1.51deg);
       box-shadow: 0 0 5px rgba(0,0,0,0.5);
-      z-index: 2;
     }
-    .photo-stack .p2 {
+    .ps-2 {
       width: 382px; height: 464px;
       top: 47px; left: 77px;
       transform: rotate(0.76deg);
       box-shadow: 0 0 5px rgba(0,0,0,0.5);
-      z-index: 3;
     }
-    .photo-stack .p3 {
+    .ps-3 {
       width: 348px; height: 503px;
-      top: 79px; left: 69px;
+      top: 79px; left: 70px;
       transform: rotate(1.06deg);
       box-shadow: 0 0 5px rgba(0,0,0,0.5);
-      z-index: 4;
     }
-    .journey-name {
-      font-family: var(--font-heading);
+    /* Main Michael photo overlaid last */
+    .ps-main {
+      top: 17px; left: 15px;
+      width: 378px; height: 505px;
+      transform: rotate(-1.77deg);
+      object-fit: cover;
+      box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    .photo-name {
+      font-family: var(--f-head);
       font-size: 50px;
       letter-spacing: -0.03em;
       text-align: center;
+      line-height: 1.16;
     }
-    .journey-text {
-      flex: 1;
-      font-family: var(--font-serif);
-      font-size: 24px;
-      line-height: 1.83;
-      color: var(--dark);
-    }
-    .journey-text p + p { margin-top: 1.2em; }
+    .journey-text { flex: 1; }
+    .journey-text p + p { margin-top: 1.5em; }
 
-    /* ─── AS SEEN IN ─── */
-    .as-seen-in-header {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-    }
-    .as-seen-in-header h2 {
-      font-family: var(--font-heading);
+    /* ── AS SEEN IN ──────────────────────────────────────────── */
+    .seen-header { display: flex; align-items: center; gap: 40px; }
+    .seen-header h2 {
+      font-family: var(--f-head);
       font-size: 50px;
       letter-spacing: -0.03em;
       white-space: nowrap;
     }
-    .as-seen-in-header .rule { flex: 1; border: none; border-top: 3px solid var(--dark); }
-    .logos-area { padding: 40px 0; }
-    .logos-rows {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-      align-items: center;
-    }
-    .logos-row {
+    .seen-header .rule { flex: 1; }
+    .logos-wrap { padding: 40px 0; display: flex; flex-direction: column; gap: 60px; }
+    .logo-row {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 60px;
       width: 100%;
     }
-    .logos-row img { height: 80px; object-fit: contain; flex-shrink: 0; }
-    .logos-row .logo-sm { height: 50px; }
-    .logos-row .logo-lg { height: 60px; }
+    .logo-row img { object-fit: contain; flex-shrink: 0; }
+    .logo-h80 { height: 80px; }
+    .logo-h60 { height: 60px; }
+    .logo-h50 { height: 50px; }
+    .logo-h40 { height: 40px; }
 
-    /* ─── DIFFERENT KIND ─── */
-    .different-kind > h2 { text-align: center; margin-bottom: 80px; }
-    .different-kind-inner {
-      display: flex;
-      gap: 90px;
-      align-items: flex-start;
-      padding: 0 120px;
-    }
-    .different-kind-text {
-      flex: 1;
-      font-family: var(--font-serif);
-      font-size: 24px;
-      line-height: 1.83;
-      color: var(--dark);
-    }
-    .different-kind-text p + p { margin-top: 1.2em; }
+    /* ── DIFFERENT KIND ──────────────────────────────────────── */
+    .diff-inner { display: flex; gap: 90px; align-items: flex-start; padding: 0 120px; }
+    .diff-text { flex: 1; }
+    .diff-text p + p { margin-top: 1.5em; }
+
+    /* Card stack (Joe DiMaggio) */
     .card-stack {
       flex-shrink: 0;
       position: relative;
@@ -414,18 +351,19 @@
       object-fit: cover;
       box-shadow: 0 4px 5px rgba(0,0,0,0.25);
     }
-    .card-stack .card-back  { top: 19px; left: 23px; }
-    .card-stack .card-front { top: 0; left: 0; transform: rotate(5.21deg); }
+    .card-back  { top: 19px; left: 23px; }
+    .card-front { top: 0; left: 0; transform: rotate(5.21deg); }
 
-    /* ─── PILLARS ─── */
-    .pillars-intro { text-align: center; margin-bottom: 80px; }
-    .pillars-intro h2 { margin-bottom: 35px; }
-    .pillars-intro p { max-width: 1000px; margin: 0 auto; }
+    /* ── PILLARS ─────────────────────────────────────────────── */
+    .pillars { display: flex; flex-direction: column; gap: 80px; align-items: center; }
+    .pillars-intro { display: flex; flex-direction: column; gap: 35px; align-items: center; text-align: center; }
+    .pillars-intro p { max-width: 1000px; }
     .pillars-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 32px;
-      margin-bottom: 60px;
+      width: 100%;
+      height: 616px;
     }
     .pillar-card {
       background: var(--cream-card);
@@ -433,74 +371,67 @@
       display: flex;
       flex-direction: column;
       gap: 32px;
-      min-height: 616px;
     }
     .pillar-card h3 {
-      font-family: var(--font-heading);
+      font-family: var(--f-head);
       font-size: 40px;
       letter-spacing: -0.03em;
       line-height: 1.16;
     }
-    .pillar-card p {
-      font-family: var(--font-serif);
-      font-size: 24px;
-      line-height: 1.83;
-    }
-    .pillars-cta { display: flex; justify-content: center; }
 
-    /* ─── WHO WE WORK WITH ─── */
-    .who-we-work { position: relative; }
-    .who-intro { text-align: center; margin-bottom: 80px; }
-    .who-intro h2 { margin-bottom: 20px; }
+    /* ── WHO WE WORK WITH ────────────────────────────────────── */
+    .who { display: flex; flex-direction: column; gap: 80px; align-items: center; position: relative; }
+    .who-intro { display: flex; flex-direction: column; gap: 20px; text-align: center; }
     .who-intro p { max-width: 1348px; margin: 0 auto; }
-    .who-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+
+    /* Decorative Yankees image */
+    .decor-yankees {
+      position: absolute;
+      right: -60px;
+      top: -80px;
+      width: 570px;
+      z-index: 0;
+      pointer-events: none;
     }
+    .decor-yankees img {
+      width: 100%;
+      transform: rotate(-24deg);
+      opacity: 0.9;
+    }
+
+    .who-rows { display: flex; flex-direction: column; gap: 20px; width: 100%; position: relative; z-index: 1; }
+    .who-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; height: 376px; }
     .who-card {
       background: var(--cream-card);
       padding: 32px;
       display: flex;
       flex-direction: column;
       gap: 32px;
-      min-height: 376px;
     }
     .who-card h3 {
-      font-family: var(--font-heading);
+      font-family: var(--f-head);
       font-size: 50px;
       letter-spacing: -0.03em;
       line-height: 1.16;
     }
-    .who-card p {
-      font-family: var(--font-serif);
-      font-size: 24px;
-      line-height: 1.83;
-    }
 
-    /* ─── READY TO TALK ─── */
-    .ready-to-talk {
+    /* ── READY TO TALK ───────────────────────────────────────── */
+    .ready {
+      position: relative;
+      overflow: hidden;
       display: flex;
       gap: 60px;
       align-items: flex-start;
-      padding: 80px;
-      padding-bottom: 120px;
-      position: relative;
-      overflow: hidden;
+      padding: 80px 80px 120px;
     }
     .ready-texture {
       position: absolute;
       inset: 0;
       mix-blend-mode: luminosity;
       pointer-events: none;
-      z-index: 0;
       overflow: hidden;
     }
-    .ready-texture img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.6;
-    }
+    .ready-texture img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
     .ready-left {
       flex: 1;
       display: flex;
@@ -510,22 +441,47 @@
       z-index: 1;
     }
     .ready-left h2 {
-      font-family: var(--font-heading);
+      font-family: var(--f-head);
       font-size: 80px;
       letter-spacing: -0.03em;
       line-height: 1.16;
+      max-width: 796px;
     }
     .ready-right {
       flex: 1;
-      font-family: var(--font-serif);
+      font-family: var(--f-serif);
       font-size: 28px;
       line-height: 1.83;
+      max-width: 840px;
       position: relative;
       z-index: 1;
     }
 
-    /* ─── FOOTER ─── */
-    .site-footer-main {
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    .footer-main {
+      position: relative;
+      overflow: hidden;
+    }
+    /* Decorative baseball card (bottom-left of footer area) */
+    .decor-card {
+      position: absolute;
+      left: -220px;
+      top: -180px;
+      width: 700px;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .decor-card img {
+      width: 100%;
+      transform: rotate(-10.52deg);
+      filter:
+        drop-shadow(0px 8px 18px rgba(0,0,0,0.39))
+        drop-shadow(0px 33px 33px rgba(0,0,0,0.34))
+        drop-shadow(0px 75px 45px rgba(0,0,0,0.20));
+    }
+    .footer-inner {
+      position: relative;
+      z-index: 1;
       padding: 140px 192px 60px;
       text-align: center;
       display: flex;
@@ -534,13 +490,13 @@
       gap: 67px;
     }
     .footer-brand {
-      font-family: var(--font-heading);
+      font-family: var(--f-head);
       font-size: 128px;
       letter-spacing: -0.02em;
       line-height: 1;
       color: var(--dark-foot);
     }
-    .footer-nav-block {
+    .footer-nav {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -549,347 +505,355 @@
     .footer-links, .footer-contact {
       display: flex;
       gap: 60px;
-      font-family: var(--font-ui);
+      font-family: var(--f-ui);
       font-size: 20px;
       font-weight: 500;
       letter-spacing: 0.01em;
       color: var(--dark-foot);
     }
-    .site-footer-bar {
+    .footer-bar {
       background: var(--dark-foot);
       padding: 40px 53px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: relative;
+      z-index: 1;
     }
-    .site-footer-bar p,
-    .site-footer-bar a {
-      font-family: var(--font-ui);
+    .footer-bar p, .footer-bar a {
+      font-family: var(--f-ui);
       font-size: 20px;
       font-weight: 500;
       color: #fff;
       letter-spacing: 0.01em;
     }
-    .site-footer-bar img { height: 24px; }
+    .footer-bar img { height: 26px; }
 
-    /* ─── RESPONSIVE ─── */
+    /* ── SECTION SPACING UTIL ────────────────────────────────── */
+    .section-hdr { display: flex; flex-direction: column; gap: 80px; }
+    .section-hdr.centered { align-items: center; text-align: center; }
+    .section-hdr p { max-width: 1000px; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
     @media (max-width: 1400px) {
-      .content-wrapper { padding: 0 60px; gap: 80px; }
-      .journey-inner, .different-kind-inner { padding: 0; }
-      .pillar-card { min-height: auto; }
-      .who-card { min-height: auto; }
-      .who-card h3 { font-size: 36px; }
-      .pillar-card h3 { font-size: 32px; }
+      .content-wrap { padding: 0 60px; gap: 80px; }
+      .journey-inner, .diff-inner { padding: 0; }
+      .pillar-card h3 { font-size: 30px; }
+      .who-card h3 { font-size: 38px; }
+      .pillars-grid { height: auto; }
+      .who-row { height: auto; }
+      .footer-inner { padding: 80px 60px 40px; }
       .footer-brand { font-size: 80px; }
-      .site-footer-main { padding: 80px 60px 40px; }
-      .nav-logo-box { width: 240px; height: 170px; }
-      .nav-logo-box img { width: 180px; height: 130px; }
     }
     @media (max-width: 1100px) {
       .pillars-grid { grid-template-columns: repeat(2, 1fr); }
-      .who-grid { grid-template-columns: repeat(2, 1fr); }
-      .content-wrapper { padding: 0 40px; }
-      .decor-baseball-card, .decor-yankees { display: none; }
+      .who-row { grid-template-columns: repeat(2, 1fr); }
+      .decor-yankees { display: none; }
+      .content-wrap { padding: 0 40px; }
     }
     @media (max-width: 900px) {
       .page-border { margin: 0; border-left: none; border-right: none; }
-      .hero-content { padding: 80px 40px; max-width: 100%; }
-      .hero-image-wrap { display: none; }
-      .hero-bg-dark { flex: 1; }
-      .hero-bg-cream { display: none; }
-      .journey-inner, .different-kind-inner { flex-direction: column; }
-      .photo-stack, .card-stack { width: 100%; max-width: 490px; margin: 0 auto; }
+      .hero-content { padding: 60px 40px 80px; }
+      .hero-img-wrap { display: none; }
+      .hero-panel-cream { display: none; }
+      .journey-inner, .diff-inner { flex-direction: column; }
+      .photo-stack, .card-stack { max-width: 100%; margin: 0 auto; }
       .pillars-grid { grid-template-columns: 1fr; }
-      .who-grid { grid-template-columns: 1fr; }
-      .content-wrapper { padding: 0 32px; gap: 60px; }
-      .ready-to-talk { flex-direction: column; padding: 60px 32px; }
+      .who-row { grid-template-columns: 1fr; height: auto; }
+      .content-wrap { padding: 0 32px; gap: 60px; }
+      .ready { flex-direction: column; padding: 60px 32px 80px; }
       .ready-left h2 { font-size: 48px; }
-      .site-footer-main { padding: 60px 32px 30px; }
+      .footer-inner { padding: 60px 32px 30px; }
       .footer-brand { font-size: 48px; }
       .footer-links, .footer-contact { flex-direction: column; align-items: center; gap: 16px; }
-      .site-footer-bar { flex-direction: column; gap: 16px; text-align: center; }
-      .site-nav { grid-template-columns: 1fr; padding: 16px 32px; gap: 16px; }
-      .nav-logo-box { display: none; }
-      .nav-links-right { justify-content: flex-start; }
+      .footer-bar { flex-direction: column; gap: 16px; text-align: center; }
+      .site-nav { grid-template-columns: 1fr; padding: 16px 32px; gap: 12px; }
+      .nav-logo-wrap { display: none; }
       .top-bar { flex-direction: column; gap: 8px; text-align: center; padding: 12px 20px; }
-      .logos-row { flex-wrap: wrap; justify-content: center; gap: 30px; }
-      .logos-row img { height: 50px; }
+      .logo-row { flex-wrap: wrap; gap: 30px; }
     }
     @media (max-width: 600px) {
-      .site-banner { font-size: 13px; gap: 16px; height: auto; padding: 12px 16px; flex-wrap: wrap; }
+      .site-banner { font-size: 13px; gap: 16px; height: auto; padding: 10px 16px; flex-wrap: wrap; }
       .hero-heading { font-size: 44px; }
-      .section-heading { font-size: 32px; }
-      .hero { min-height: 500px; }
-      .section-subtext, .journey-text, .different-kind-text,
-      .pillar-card p, .who-card p, .ready-right { font-size: 18px; }
-      .who-card h3 { font-size: 28px; }
+      .sec-heading { font-size: 32px; }
+      .sec-body, .journey-text, .diff-text, .pillar-card p, .who-card p { font-size: 18px; }
+      .ready-right { font-size: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- TOP INFO BAR -->
-  <div class="top-bar">
-    <div>Contact Michael: <em>info@baseballintheattic.com</em> or <em>(312) 379-9090</em></div>
-    <div class="top-bar-right">
-      <span>Follow us</span>
-      <img src="https://www.figma.com/api/mcp/asset/22c4834d-558c-4fd6-af34-00795e249a49" alt="Social links" />
-    </div>
+<!-- TOP CONTACT BAR -->
+<div class="top-bar">
+  <div>Contact Michael: <em>info@baseballintheattic.com</em> or <em>(312) 379-9090</em></div>
+  <div class="top-bar-right">
+    <span>Follow us</span>
+    <img src="https://www.figma.com/api/mcp/asset/60e4cc89-b9fa-42ba-a3ef-a1f814bb68e3" alt="Social links" />
   </div>
+</div>
 
-  <!-- NAVIGATION -->
-  <nav class="site-nav">
-    <div class="nav-links">
-      <a href="#">Appraisals</a>
-      <a href="#">Speaking</a>
-      <a href="#">PSA Lead Appraiser</a>
-    </div>
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-links">
+    <a href="#">Appraisals</a>
+    <a href="#">Speaking</a>
+    <a href="#">PSA Lead Appraiser</a>
+  </div>
+  <div class="nav-logo-wrap">
     <div class="nav-logo-box">
-      <img src="https://www.figma.com/api/mcp/asset/de11698c-ca63-4b11-8957-ac9a74d4d510" alt="Baseball in the Attic" />
+      <img src="https://www.figma.com/api/mcp/asset/d0685b44-684b-4bf9-89ca-4518579cf6a7" alt="Baseball in the Attic" />
     </div>
-    <div class="nav-links nav-links-right">
-      <a href="#">Podcast</a>
-      <a href="#">Media</a>
-      <a href="#">Gallery</a>
-      <a href="#">Blog</a>
-      <a href="#">Calendar</a>
-    </div>
-  </nav>
-
-  <!-- BANNER -->
-  <div class="site-banner">
-    <span>No Sales Motive</span>
-    <span class="banner-dot"></span>
-    <span>No Consignments</span>
-    <span class="banner-dot"></span>
-    <span>No Conflicts of Interest.</span>
   </div>
+  <div class="nav-links nav-links-right">
+    <a href="#">Podcast</a>
+    <a href="#">Media</a>
+    <a href="#">Gallery</a>
+    <a href="#">Blog</a>
+    <a href="#">Calendar</a>
+  </div>
+</nav>
 
-  <!-- PAGE BORDER -->
-  <div class="page-border">
+<!-- TEAL BANNER -->
+<div class="site-banner">
+  <span>No Sales Motive</span>
+  <span class="banner-dot"></span>
+  <span>No Consignments</span>
+  <span class="banner-dot"></span>
+  <span>No Conflicts of Interest.</span>
+</div>
 
-    <!-- Paper texture overlay -->
-    <div class="paper-texture">
-      <img src="https://www.figma.com/api/mcp/asset/35e85e37-2630-4475-83f2-589b1a86d87e" alt="" />
+<!-- PAGE BORDER WRAPPER -->
+<div class="page-border">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-panels">
+      <div class="hero-panel-dark"></div>
+      <div class="hero-panel-cream"></div>
     </div>
+    <div class="paper-top">
+      <img src="https://www.figma.com/api/mcp/asset/a87c00a9-3cb7-4415-a38d-ee3b19301b88" alt="" />
+    </div>
+    <div class="hero-img-wrap">
+      <img src="https://www.figma.com/api/mcp/asset/2a4c6a11-83c0-4267-98de-f24352e550a5" alt="Sports memorabilia" />
+    </div>
+    <div class="hero-content">
+      <p class="hero-label">About Us</p>
+      <div class="hero-heading-wrap">
+        <h1 class="hero-heading">Michael Osacky:<br>Your Trusted Sports Memorabilia Appraiser</h1>
+        <p class="hero-subtext">Michael Osacky is an ISA-accredited, USPAP-compliant appraiser and Lead Appraiser at PSA, providing independent, formal appraisal reports for sports cards and memorabilia across all major sports.</p>
+        <a href="#" class="btn-pill">Start Your Appraisal</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-bg">
-        <div class="hero-bg-dark"></div>
-        <div class="hero-bg-cream"></div>
-      </div>
-      <img class="decor-baseball-card" src="https://www.figma.com/api/mcp/asset/02306b09-dd05-485c-bd9e-974a703b04ee" alt="" />
-      <div class="hero-content">
-        <p class="hero-label">About Us</p>
-        <div class="hero-heading-wrap">
-          <h1 class="hero-heading">Michael Osacky:<br />Your Trusted Sports Memorabilia Appraiser</h1>
-          <p class="hero-subtext">Michael Osacky is an ISA-accredited, USPAP-compliant appraiser and Lead Appraiser at PSA, providing independent, formal appraisal reports for sports cards and memorabilia across all major sports.</p>
-          <a href="#" class="btn-pill">Start Your Appraisal</a>
+  <!-- MAIN CONTENT -->
+  <div class="content-wrap">
+
+    <!-- THE JOURNEY -->
+    <section class="journey">
+      <h2 class="sec-heading" style="text-align:center;">The Journey Behind My Appraisals</h2>
+      <div class="journey-inner">
+        <div class="photo-col">
+          <div class="photo-stack">
+            <div class="ps-bg"></div>
+            <img class="ps-1" src="https://www.figma.com/api/mcp/asset/29ffd064-7914-4c54-ad9b-731140101626" alt="" />
+            <img class="ps-2" src="https://www.figma.com/api/mcp/asset/969301c3-dc42-495a-92dd-bbffd1847195" alt="" />
+            <img class="ps-3" src="https://www.figma.com/api/mcp/asset/fbcf2c1d-7672-4cf4-b66c-4e5d74f8ee12" alt="" />
+            <img class="ps-main" src="https://www.figma.com/api/mcp/asset/265edc68-9366-46ea-81eb-1584ec980c29" alt="Michael Osacky" />
+          </div>
+          <p class="photo-name">Michael Osacky</p>
         </div>
-      </div>
-      <div class="hero-image-wrap">
-        <img src="https://www.figma.com/api/mcp/asset/5e75a2d9-ec64-4a44-a567-e9b4f537e137" alt="Sports memorabilia" />
+        <div class="journey-text sec-body">
+          <p>The heirloom baseball signed by the Babe himself. The championship ring, heavy in your palm, engraved with a year that became emblematic in your family. Sports history gives collections value. Personal stories give them meaning.</p>
+          <p>Michael Osacky's journey began the way many collections do, with a dusty shoebox of baseball cards passed down from his grandfather. He was drawn to the details: why one card could be worth more than another, how condition and provenance shape value, and how each piece found its way into a collection. That early curiosity grew into a lifelong passion for the hobby.</p>
+          <p>Today, Michael is an ISA-accredited, USPAP-compliant appraiser and Lead Appraiser at PSA, providing independent, formal appraisal reports grounded in research, standards, and objectivity. Every collection is approached with care — grounded in research, guided by standards, and fueled by a genuine love of the hobby.</p>
+        </div>
       </div>
     </section>
 
-    <!-- MAIN CONTENT -->
-    <div class="content-wrapper">
+    <!-- AS SEEN IN -->
+    <section>
+      <div class="seen-header">
+        <hr class="rule" style="flex:1;" />
+        <h2>As Seen In</h2>
+        <hr class="rule" style="flex:1;" />
+      </div>
+      <div class="logos-wrap">
+        <!-- Row 1 -->
+        <div class="logo-row">
+          <img class="logo-h50" src="https://www.figma.com/api/mcp/asset/7ef25543-0028-4b65-9f6b-c57fd7110398" alt="WGN Radio" />
+          <img class="logo-h60" src="https://www.figma.com/api/mcp/asset/2af4d80e-b60f-4d1a-8b08-1463fae44e44" alt="Publication" />
+          <img class="logo-h50" src="https://www.figma.com/api/mcp/asset/e628e8e9-01af-4025-a56a-e6280ab5a08a" alt="Publication" />
+          <img class="logo-h50" src="https://www.figma.com/api/mcp/asset/612405fd-7d63-4949-8845-168ea241179a" alt="Wall Street Journal" />
+          <img class="logo-h50" src="https://www.figma.com/api/mcp/asset/e253e2f9-e242-4211-8558-ff18b372a6b2" alt="Parade" />
+        </div>
+        <!-- Row 2 -->
+        <div class="logo-row">
+          <img class="logo-h50" src="https://www.figma.com/api/mcp/asset/de1e1cab-a4bf-43c6-97e1-732d2f8e3dbf" alt="Publication" />
+          <img class="logo-h50" src="https://www.figma.com/api/mcp/asset/5886fa67-6cc9-47a7-b3c7-7c878e34feff" alt="Publication" />
+          <img class="logo-h80" src="https://www.figma.com/api/mcp/asset/fbd4a925-1ae1-42bb-8745-96055630201a" alt="Publication" />
+          <img class="logo-h80" src="https://www.figma.com/api/mcp/asset/612405fd-7d63-4949-8845-168ea241179a" alt="Wall Street Journal" />
+          <img class="logo-h80" src="https://www.figma.com/api/mcp/asset/e8b88712-eb14-42a6-8e2a-c6b13de98663" alt="Publication" />
+        </div>
+        <!-- Row 3 -->
+        <div class="logo-row">
+          <img class="logo-h50" src="https://www.figma.com/api/mcp/asset/5935c059-9916-4364-acdb-63e74b886d73" alt="Publication" />
+          <img class="logo-h50" src="https://www.figma.com/api/mcp/asset/cee75092-e83b-4e03-8b84-a2aada7485a4" alt="Publication" />
+        </div>
+        <!-- Row 4 -->
+        <div class="logo-row">
+          <img class="logo-h50" src="https://www.figma.com/api/mcp/asset/c507ccd7-1bfc-43c1-8295-6fccde647c24" alt="Publication" />
+          <img class="logo-h50" src="https://www.figma.com/api/mcp/asset/e7395c3a-7340-4a30-bbaa-708f656a047a" alt="Green Bay Press Gazette" />
+          <img class="logo-h60" src="https://www.figma.com/api/mcp/asset/165b15f6-6859-46ee-8c12-e5a395b91c0e" alt="Publication" />
+        </div>
+        <!-- Row 5 -->
+        <div class="logo-row">
+          <img class="logo-h60" src="https://www.figma.com/api/mcp/asset/c507ccd7-1bfc-43c1-8295-6fccde647c24" alt="Publication" />
+          <img class="logo-h80" src="https://www.figma.com/api/mcp/asset/7e05f60e-a014-4bd6-90ac-e609897ac16b" alt="Publication" />
+        </div>
+      </div>
+      <hr class="rule" />
+    </section>
 
-      <!-- THE JOURNEY -->
-      <section class="journey">
-        <h2 class="section-heading">The Journey Behind My Appraisals</h2>
-        <div class="journey-inner">
-          <div class="journey-photos-col">
-            <div class="photo-stack">
-              <img class="p4" src="https://www.figma.com/api/mcp/asset/d03626e3-1bf6-4496-9af5-2764b8845310" alt="Michael Osacky" />
-              <img class="p1" src="https://www.figma.com/api/mcp/asset/b485547f-abb4-41f1-a92c-1a2c83044d4c" alt="Michael early career" />
-              <img class="p2" src="https://www.figma.com/api/mcp/asset/12c8e56b-cc04-4927-8c65-aeb0d6fef9ac" alt="Baseball cards" />
-              <img class="p3" src="https://www.figma.com/api/mcp/asset/cf541c09-7451-4198-bdf4-bff2bba5d265" alt="Collection" />
-            </div>
-            <p class="journey-name">Michael Osacky</p>
-          </div>
-          <div class="journey-text">
-            <p>The heirloom baseball signed by the Babe himself. The championship ring, heavy in your palm, engraved with a year that became emblematic in your family. Sports history gives collections value. Personal stories give them meaning.</p>
-            <p>Michael Osacky's journey began the way many collections do, with a dusty shoebox of baseball cards passed down from his grandfather. He was drawn to the details: why one card could be worth more than another, how condition and provenance shape value, and how each piece found its way into a collection. That early curiosity grew into a lifelong passion for the hobby.</p>
-            <p>Today, Michael is an ISA-accredited, USPAP-compliant appraiser and Lead Appraiser at PSA, providing independent, formal appraisal reports grounded in research, standards, and objectivity. Every collection is approached with care — grounded in research, guided by standards, and fueled by a genuine love of the hobby.</p>
-          </div>
+    <!-- A DIFFERENT KIND -->
+    <section>
+      <div class="section-hdr" style="gap:80px; margin-bottom:80px;">
+        <h2 class="sec-heading" style="text-align:center;">A Different Kind of Appraisal Experience</h2>
+      </div>
+      <div class="diff-inner">
+        <div class="diff-text sec-body">
+          <p>The typical sports collection appraisal process is rushed, anonymous, and influenced by competing incentives. Speed and volume are priorities, and in many cases, the party assigning value is also positioned to benefit from a future transaction, compromising objectivity. Baseball in the Attic was built differently.</p>
+          <p>Michael Osacky operates as a one-person, independent practice by design. From the first conversation through the in-person evaluation and the final written report, you work directly with him. Most appraisals are conducted on site, allowing collections to be examined carefully and in context. He does not buy, sell, or consign memorabilia. The focus remains on thoughtful analysis, clear communication, and delivering grounded, defensible appraisals you can rely on.</p>
         </div>
-      </section>
+        <div class="card-stack">
+          <img class="card-back"  src="https://www.figma.com/api/mcp/asset/5de66c1d-bfc9-4cb3-881e-f9b9d008c801" alt="Baseball card" />
+          <img class="card-front" src="https://www.figma.com/api/mcp/asset/5de66c1d-bfc9-4cb3-881e-f9b9d008c801" alt="Baseball card" />
+        </div>
+      </div>
+    </section>
 
-      <!-- AS SEEN IN -->
-      <section>
-        <div class="as-seen-in-header">
-          <div class="rule"></div>
-          <h2>As Seen In</h2>
-          <div class="rule"></div>
+    <!-- INDEPENDENT. PERSONAL. PRECISE. -->
+    <section class="pillars">
+      <div class="pillars-intro">
+        <h2 class="sec-heading">Independent. Personal. Precise.</h2>
+        <p class="sec-body">At the heart of Baseball in the Attic is its one-person approach, defined by the direct involvement, seasoned expertise, and careful attention of Michael Osacky.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h3>Nostalgic by nature.</h3>
+          <hr class="rule" />
+          <p class="sec-body">Sports collectibles carry memory and meaning. Michael approaches each item with historian-level care, honoring its story and context. Nostalgia isn't sentimentalized; it's understood as part of the value.</p>
         </div>
-        <div class="logos-area">
-          <div class="logos-rows">
-            <div class="logos-row">
-              <img src="https://www.figma.com/api/mcp/asset/c3eac6ed-8a3b-4a1d-b380-d0e2ac9b4368" alt="WGN Radio" />
-              <img src="https://www.figma.com/api/mcp/asset/14c6d849-d14a-410b-9c03-8b2e2dc57d7a" alt="Forbes" />
-              <img src="https://www.figma.com/api/mcp/asset/9ea166f9-2f23-4157-8d1f-d158e450cdda" alt="Publication" class="logo-sm" />
-              <img src="https://www.figma.com/api/mcp/asset/499abe82-11cf-4096-8968-e08da4ef25a9" alt="Wall Street Journal" />
-              <img src="https://www.figma.com/api/mcp/asset/7734c5b1-200f-4457-a178-eb863f98556f" alt="Publication" />
-            </div>
-            <div class="logos-row">
-              <img src="https://www.figma.com/api/mcp/asset/76a4fb27-cc8b-4aca-afde-7a6ac9b4e575" alt="Publication" class="logo-sm" />
-              <img src="https://www.figma.com/api/mcp/asset/04413ecc-9047-4f38-9ba0-b00f955ee5c4" alt="Los Angeles Times" class="logo-sm" />
-              <img src="https://www.figma.com/api/mcp/asset/11183824-4b96-4e3f-9754-67ab5f852baf" alt="Publication" />
-              <img src="https://www.figma.com/api/mcp/asset/499abe82-11cf-4096-8968-e08da4ef25a9" alt="Wall Street Journal" />
-              <img src="https://www.figma.com/api/mcp/asset/7734c5b1-200f-4457-a178-eb863f98556f" alt="Parade" />
-            </div>
-            <div class="logos-row">
-              <img src="https://www.figma.com/api/mcp/asset/74a724c6-b916-4a5c-929d-b7e2fbb91551" alt="Publication" class="logo-sm" />
-              <img src="https://www.figma.com/api/mcp/asset/e0556f28-1847-40a7-843c-2d204c37e363" alt="Publication" class="logo-sm" />
-            </div>
-            <div class="logos-row">
-              <img src="https://www.figma.com/api/mcp/asset/9f032866-c3d3-4d97-9a5a-6cff6e3fc7a5" alt="Publication" class="logo-lg" />
-              <img src="https://www.figma.com/api/mcp/asset/af021f3e-0c81-4f79-926d-2590dff17025" alt="Publication" class="logo-sm" />
-            </div>
-            <div class="logos-row">
-              <img src="https://www.figma.com/api/mcp/asset/f1451efe-1a1e-4287-b5a7-19d6d255d23c" alt="Publication" class="logo-lg" />
-              <img src="https://www.figma.com/api/mcp/asset/47c75b28-bcd5-458b-83b3-69f5c3650e5a" alt="Publication" />
-            </div>
-          </div>
+        <div class="pillar-card">
+          <h3>Credibility that matters.</h3>
+          <hr class="rule" />
+          <p class="sec-body">With ISA accreditation, PSA leadership experience, and decades in the hobby, Michael brings earned authority. His valuations are rigorous, defensible, and trusted by collectors, insurers, attorneys, and the IRS.</p>
         </div>
-        <div class="as-seen-in-header">
-          <div class="rule"></div>
+        <div class="pillar-card">
+          <h3>No Conflicts. No Hidden Agenda.</h3>
+          <hr class="rule" />
+          <p class="sec-body">Baseball in the Attic appraises only — never sells. With no stake in the outcome, values aren't inflated or steered. Every appraisal is independent, objective, and grounded in research and standards.</p>
         </div>
-      </section>
+        <div class="pillar-card">
+          <h3>You work directly with Michael.</h3>
+          <hr class="rule" />
+          <p class="sec-body">From the first conversation through the final appraisal report, Michael personally handles every step. No junior appraisers, no handoffs. Just clear communication, careful evaluation, and discretion throughout.</p>
+        </div>
+      </div>
+      <a href="#" class="btn-pill">Start Your Appraisal</a>
+    </section>
 
-      <!-- A DIFFERENT KIND -->
-      <section class="different-kind">
-        <h2 class="section-heading">A Different Kind of Appraisal Experience</h2>
-        <div class="different-kind-inner">
-          <div class="different-kind-text">
-            <p>The typical sports collection appraisal process is rushed, anonymous, and influenced by competing incentives. Speed and volume are priorities, and in many cases, the party assigning value is also positioned to benefit from a future transaction, compromising objectivity. Baseball in the Attic was built differently.</p>
-            <p>Michael Osacky operates as a one-person, independent practice by design. From the first conversation through the in-person evaluation and the final written report, you work directly with him. Most appraisals are conducted on site, allowing collections to be examined carefully and in context. He does not buy, sell, or consign memorabilia. The focus remains on thoughtful analysis, clear communication, and delivering grounded, defensible appraisals you can rely on.</p>
-          </div>
-          <div class="card-stack">
-            <img class="card-back"  src="https://www.figma.com/api/mcp/asset/3706e83d-f2ae-4615-968e-fbe95579bb90" alt="Baseball card" />
-            <img class="card-front" src="https://www.figma.com/api/mcp/asset/3706e83d-f2ae-4615-968e-fbe95579bb90" alt="Baseball card" />
-          </div>
-        </div>
-      </section>
-
-      <!-- INDEPENDENT. PERSONAL. PRECISE. -->
-      <section class="pillars">
-        <div class="pillars-intro">
-          <h2 class="section-heading">Independent. Personal. Precise.</h2>
-          <p class="section-subtext">At the heart of Baseball in the Attic is its one-person approach, defined by the direct involvement, seasoned expertise, and careful attention of Michael Osacky.</p>
-        </div>
-        <div class="pillars-grid">
-          <div class="pillar-card">
-            <h3>Nostalgic by nature.</h3>
-            <hr class="divider-line" />
-            <p>Sports collectibles carry memory and meaning. Michael approaches each item with historian-level care, honoring its story and context. Nostalgia isn't sentimentalized; it's understood as part of the value.</p>
-          </div>
-          <div class="pillar-card">
-            <h3>Credibility that matters.</h3>
-            <hr class="divider-line" />
-            <p>With ISA accreditation, PSA leadership experience, and decades in the hobby, Michael brings earned authority. His valuations are rigorous, defensible, and trusted by collectors, insurers, attorneys, and the IRS.</p>
-          </div>
-          <div class="pillar-card">
-            <h3>No Conflicts. No Hidden Agenda.</h3>
-            <hr class="divider-line" />
-            <p>Baseball in the Attic appraises only — never sells. With no stake in the outcome, values aren't inflated or steered. Every appraisal is independent, objective, and grounded in research and standards.</p>
-          </div>
-          <div class="pillar-card">
-            <h3>You work directly with Michael.</h3>
-            <hr class="divider-line" />
-            <p>From the first conversation through the final appraisal report, Michael personally handles every step. No junior appraisers, no handoffs. Just clear communication, careful evaluation, and discretion throughout.</p>
-          </div>
-        </div>
-        <div class="pillars-cta">
-          <a href="#" class="btn-pill">Start Your Appraisal</a>
-        </div>
-      </section>
-
-      <!-- WHO WE WORK WITH -->
-      <section class="who-we-work">
-        <img class="decor-yankees" src="https://www.figma.com/api/mcp/asset/c2052b6b-56f8-4d8e-ad9e-00ebeff05498" alt="" style="top:-100px;" />
-        <div class="who-intro">
-          <h2 class="section-heading">Who We Work With</h2>
-          <p class="section-subtext">Baseball in the Attic works with people facing important decisions around sports memorabilia — from inheritance and insurance to legal matters and long-term planning.</p>
-        </div>
-        <div class="who-grid">
+    <!-- WHO WE WORK WITH -->
+    <section class="who">
+      <div class="decor-yankees">
+        <img src="https://www.figma.com/api/mcp/asset/a6c3900e-b481-4aed-a626-c9312d70fd20" alt="" />
+      </div>
+      <div class="who-intro">
+        <h2 class="sec-heading">Who We Work With</h2>
+        <p class="sec-body">Baseball in the Attic works with people facing important decisions around sports memorabilia — from inheritance and insurance to legal matters and long-term planning.</p>
+      </div>
+      <div class="who-rows">
+        <div class="who-row">
           <div class="who-card">
             <h3>Estate Planning &amp; Inheritance</h3>
-            <hr class="divider-line" />
-            <p>Appraisals for inherited or long-held collections, providing clarity before estate decisions are made.</p>
+            <hr class="rule" />
+            <p class="sec-body">Appraisals for inherited or long-held collections, providing clarity before estate decisions are made.</p>
           </div>
           <div class="who-card">
             <h3>Insurance Coverage</h3>
-            <hr class="divider-line" />
-            <p>Documented valuations to support insurance coverage, updated policy limits, and future claims.</p>
+            <hr class="rule" />
+            <p class="sec-body">Documented valuations to support insurance coverage, updated policy limits, and future claims.</p>
           </div>
           <div class="who-card">
             <h3>Legal &amp; Divorce Matters</h3>
-            <hr class="divider-line" />
-            <p>Independent, well-documented appraisals prepared for asset division, litigation, or formal review.</p>
+            <hr class="rule" />
+            <p class="sec-body">Independent, well-documented appraisals prepared for asset division, litigation, or formal review.</p>
           </div>
+        </div>
+        <div class="who-row">
           <div class="who-card">
             <h3>Donation Planning</h3>
-            <hr class="divider-line" />
-            <p>Valuations for charitable contributions, museums, or institutional gifts.</p>
+            <hr class="rule" />
+            <p class="sec-body">Valuations for charitable contributions, museums, or institutional gifts.</p>
           </div>
           <div class="who-card">
             <h3>Professional Advisors</h3>
-            <hr class="divider-line" />
-            <p>Independent sports memorabilia appraisals supporting attorneys, fiduciaries, and financial professionals.</p>
+            <hr class="rule" />
+            <p class="sec-body">Independent sports memorabilia appraisals supporting attorneys, fiduciaries, and financial professionals.</p>
           </div>
           <div class="who-card">
             <h3>Athletes &amp; Legacy Families</h3>
-            <hr class="divider-line" />
-            <p>Discreet, objective valuation of collections tied to public legacy or personal family history.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- READY TO TALK -->
-      <section class="ready-to-talk">
-        <div class="ready-texture">
-          <img src="https://www.figma.com/api/mcp/asset/35e85e37-2630-4475-83f2-589b1a86d87e" alt="" />
-        </div>
-        <div class="ready-left">
-          <h2>Ready to Talk?</h2>
-          <a href="#" class="btn-pill">Start Your Appraisal</a>
-        </div>
-        <div class="ready-right">
-          <p>If you have questions about a sports card collection or the appraisal process itself, you're welcome to reach out. Whether you're navigating inheritance, insurance, legal matters, or simply want clarity around what you have, we're happy to connect. No obligation, just a direct conversation about your collection and the appropriate next step.</p>
-        </div>
-      </section>
-
-    </div><!-- /content-wrapper -->
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="site-footer-main">
-        <div class="footer-brand">Baseball in the Attic</div>
-        <div class="footer-nav-block">
-          <div class="footer-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Appraisals</a>
-            <a href="#">PSA Lead Appraiser</a>
-            <a href="#">Contact Us</a>
-          </div>
-          <div class="footer-contact">
-            <span>Phone: 312.379.9090</span>
-            <span>Email: info@BaseballintheAttic.com</span>
+            <hr class="rule" />
+            <p class="sec-body">Discreet, objective valuation of collections tied to public legacy or personal family history.</p>
           </div>
         </div>
       </div>
-      <div class="site-footer-bar">
-        <p>&copy; 2025 Baseball in the Attic. All Rights Reserved.</p>
-        <p><a href="#">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">Terms of Service</a></p>
-        <img src="https://www.figma.com/api/mcp/asset/c0336404-1612-4c85-b9cc-a737c96bf54f" alt="Social media icons" />
-      </div>
-    </footer>
+    </section>
 
-  </div><!-- /page-border -->
+    <!-- READY TO TALK -->
+    <section class="ready">
+      <div class="ready-texture">
+        <img src="https://www.figma.com/api/mcp/asset/a87c00a9-3cb7-4415-a38d-ee3b19301b88" alt="" />
+      </div>
+      <div class="ready-left">
+        <h2>Ready to Talk?</h2>
+        <a href="#" class="btn-pill">Start Your Appraisal</a>
+      </div>
+      <p class="ready-right">If you have questions about a sports card collection or the appraisal process itself, you're welcome to reach out. Whether you're navigating inheritance, insurance, legal matters, or simply want clarity around what you have, we're happy to connect. No obligation, just a direct conversation about your collection and the appropriate next step.</p>
+    </section>
+
+  </div><!-- /content-wrap -->
+
+  <!-- FOOTER -->
+  <footer class="footer-main">
+    <div class="decor-card">
+      <img src="https://www.figma.com/api/mcp/asset/fafd0c45-f517-4c14-b358-7158513df1ce" alt="" />
+    </div>
+    <div class="footer-inner">
+      <p class="footer-brand">Baseball in the Attic</p>
+      <div class="footer-nav">
+        <div class="footer-links">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Appraisals</a>
+          <a href="#">PSA Lead Appraiser</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="footer-contact">
+          <span>Phone: 312.379.9090</span>
+          <span>Email: info@BaseballintheAttic.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>&copy; 2025 Baseball in the Attic. All Rights Reserved.</p>
+      <p><a href="#">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">Terms of Service</a></p>
+      <img src="https://www.figma.com/api/mcp/asset/35da89e8-7989-473d-9d0d-b9941ef827ec" alt="Social media icons" />
+    </div>
+  </footer>
+
+</div><!-- /page-border -->
 
 </body>
 </html>
