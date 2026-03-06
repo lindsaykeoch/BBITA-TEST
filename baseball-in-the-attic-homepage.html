@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baseball in the Attic – Independent Sports Appraisals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+
+    /* ============================================================
+       GLOBAL / RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F4EDD8;
+      --cream-dark: #EDE4C8;
+      --dark:       #1C1C1C;
+      --dark-navy:  #1A2236;
+      --gold:       #B8860B;
+      --gold-light: #D4A843;
+      --text:       #2C2C2C;
+      --muted:      #6B6B6B;
+      --border:     #C8B98A;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans:  'Lato', Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a   { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .serif-heading {
+      font-family: var(--font-serif);
+      line-height: 1.2;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 32px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 2px solid var(--dark);
+      background: transparent;
+      color: var(--dark);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--dark); color: var(--cream); }
+
+    .btn-gold {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+    }
+    .btn-gold:hover { background: var(--gold-light); border-color: var(--gold-light); color: #fff; }
+
+    .btn-dark {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: var(--cream);
+    }
+    .btn-dark:hover { background: var(--gold); border-color: var(--gold); }
+
+    /* divider rule */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+
+    /* ============================================================
+       1. TOP ANNOUNCEMENT BAR
+    ============================================================ */
+    .announcement-bar {
+      background: var(--dark-navy);
+      color: #ccc;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 8px 16px;
+    }
+    .announcement-bar a { color: var(--gold-light); }
+
+
+    /* ============================================================
+       2. NAVIGATION
+    ============================================================ */
+    .site-nav {
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+    .site-nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--dark);
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta { flex-shrink: 0; }
+
+
+    /* ============================================================
+       3. HERO SECTION
+    ============================================================ */
+    .hero {
+      background: var(--cream);
+      padding: 70px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      align-items: center;
+      gap: 60px;
+    }
+    .hero-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+    .hero-subtext {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .hero-image {
+      position: relative;
+    }
+    .hero-image img {
+      width: 100%;
+      filter: sepia(20%) contrast(1.05);
+    }
+
+
+    /* ============================================================
+       4. MEDIA LOGOS
+    ============================================================ */
+    .media-logos {
+      background: var(--cream-dark);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 24px;
+    }
+    .media-logos .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 28px 40px;
+    }
+    .media-logos .logo-item {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+    .media-logos .logo-item:hover { opacity: 1; }
+    /* If using actual logo images, replace .logo-item with <img> tags */
+
+
+    /* ============================================================
+       5. PULL QUOTE
+    ============================================================ */
+    .pull-quote {
+      background: var(--cream);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pull-quote .container {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      align-items: center;
+      gap: 70px;
+    }
+    .quote-text {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 32px);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--dark);
+      position: relative;
+      padding-left: 28px;
+    }
+    .quote-text::before {
+      content: '\201C';
+      font-size: 100px;
+      line-height: 0;
+      color: var(--gold);
+      opacity: 0.4;
+      position: absolute;
+      left: -10px;
+      top: 30px;
+      font-family: var(--font-serif);
+    }
+    .quote-image img {
+      width: 100%;
+      border: 6px solid var(--cream-dark);
+      box-shadow: 6px 6px 0 var(--border);
+      filter: sepia(30%) contrast(1.05);
+    }
+
+
+    /* ============================================================
+       6. INDEPENDENT SPORTS CTA BAND
+    ============================================================ */
+    .sports-cta-band {
+      background: var(--dark-navy);
+      color: var(--cream);
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .sports-cta-band h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 4vw, 42px);
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .sports-cta-band p {
+      font-size: 16px;
+      color: #aab;
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+
+
+    /* ============================================================
+       7. RECENT VALUATIONS
+    ============================================================ */
+    .recent-valuations {
+      background: var(--cream);
+      padding: 70px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3vw, 36px);
+      color: var(--dark);
+    }
+    .valuations-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .valuation-card {
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+    .valuation-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      filter: sepia(15%);
+    }
+    .valuation-card-body {
+      padding: 16px;
+    }
+    .valuation-card-body h4 {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .valuation-card-body .val-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .valuation-card-body .val-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 8px;
+    }
+
+
+    /* ============================================================
+       8. MEET MICHAEL
+    ============================================================ */
+    .meet-michael {
+      background: var(--cream-dark);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .meet-michael .container {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .michael-image img {
+      width: 100%;
+      border: 6px solid var(--cream);
+      box-shadow: 6px 6px 0 var(--border);
+      filter: sepia(15%) contrast(1.05);
+    }
+    .michael-content .section-label { margin-bottom: 8px; }
+    .michael-content h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3vw, 38px);
+      margin-bottom: 6px;
+    }
+    .michael-content .michael-title {
+      font-size: 14px;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .michael-content p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .michael-content .credentials {
+      list-style: none;
+      margin: 20px 0 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .michael-content .credentials li {
+      font-size: 14px;
+      padding-left: 20px;
+      position: relative;
+    }
+    .michael-content .credentials li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+
+    /* ============================================================
+       9. NO SALES MOTIVE BAND
+    ============================================================ */
+    .no-sales-band {
+      background: var(--dark);
+      color: var(--cream);
+      text-align: center;
+      padding: 70px 24px;
+    }
+    .no-sales-band h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 4vw, 44px);
+      line-height: 1.2;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+    .no-sales-band p {
+      color: #99a;
+      font-size: 16px;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+
+    /* ============================================================
+       10. THREE PILLARS — Independent. Personal. Precise.
+    ============================================================ */
+    .three-pillars {
+      background: var(--cream);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .three-pillars .intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 56px;
+    }
+    .three-pillars .intro h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.5vw, 40px);
+      margin-bottom: 14px;
+    }
+    .three-pillars .intro p { color: var(--muted); }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .pillar {
+      text-align: center;
+      padding: 32px 24px;
+      border: 1px solid var(--border);
+      background: var(--cream-dark);
+    }
+    .pillar-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--dark-navy);
+    }
+    .pillar-icon svg { fill: var(--gold-light); width: 30px; height: 30px; }
+    .pillar h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    .pillar p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+
+    /* ============================================================
+       11. SERVICE CARDS
+    ============================================================ */
+    .service-cards {
+      background: var(--cream-dark);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .service-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .service-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 40px 36px;
+    }
+    .service-card .service-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+    .service-card p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+    .service-card ul {
+      list-style: none;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .service-card ul li {
+      font-size: 14px;
+      padding-left: 18px;
+      position: relative;
+    }
+    .service-card ul li::before {
+      content: '✓';
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+
+    /* ============================================================
+       12. APPRAISAL PROCESS
+    ============================================================ */
+    .appraisal-process {
+      background: var(--cream);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .appraisal-process .section-intro {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .appraisal-process .section-intro h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.5vw, 40px);
+      margin-bottom: 12px;
+    }
+    .appraisal-process .section-intro p { color: var(--muted); max-width: 540px; margin: 0 auto; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: var(--border);
+      z-index: 0;
+    }
+    .process-step {
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--dark-navy);
+      color: var(--gold-light);
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 3px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--border);
+    }
+    .process-step h4 {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+    .process-step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+
+    /* ============================================================
+       13. WHO WE SERVE
+    ============================================================ */
+    .who-we-serve {
+      background: var(--cream-dark);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .who-we-serve .section-intro {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .who-we-serve .section-intro h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.5vw, 40px);
+      margin-bottom: 12px;
+    }
+    .who-we-serve .section-intro p { color: var(--muted); max-width: 540px; margin: 0 auto; }
+
+    .accordion {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .accordion-item {
+      border: 1px solid var(--border);
+      border-bottom: none;
+      background: var(--cream);
+    }
+    .accordion-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .accordion-trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      text-align: left;
+      color: var(--dark);
+    }
+    .accordion-trigger .acc-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      font-size: 18px;
+      color: var(--gold);
+      transition: transform 0.2s;
+    }
+    .accordion-item.open .acc-icon { transform: rotate(45deg); }
+
+    .accordion-body {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .accordion-item.open .accordion-body { display: block; }
+
+
+    /* ============================================================
+       14. CLIENT TESTIMONIAL
+    ============================================================ */
+    .testimonial-section {
+      background: var(--cream);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .testimonial-section .container {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+    .testimonial-photo img {
+      width: 100%;
+      border-radius: 4px;
+      filter: sepia(20%);
+      box-shadow: 6px 6px 0 var(--border);
+    }
+    .testimonial-content blockquote {
+      font-family: var(--font-serif);
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--dark);
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 20px;
+    }
+    .testimonial-content blockquote::before {
+      content: '\201C';
+      font-size: 60px;
+      line-height: 0;
+      color: var(--gold);
+      opacity: 0.5;
+      position: absolute;
+      left: -8px;
+      top: 20px;
+    }
+    .testimonial-attribution {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+
+    /* ============================================================
+       15. CTA BANNER
+    ============================================================ */
+    .cta-banner {
+      background: var(--dark-navy);
+      color: #fff;
+      padding: 80px 24px;
+    }
+    .cta-banner .container {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 40px;
+    }
+    .cta-banner h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3.5vw, 40px);
+      margin-bottom: 10px;
+    }
+    .cta-banner p { color: #99a; font-size: 15px; }
+
+
+    /* ============================================================
+       16. FAQ
+    ============================================================ */
+    .faq-section {
+      background: var(--cream-dark);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-section .section-intro {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .faq-section .section-intro h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.5vw, 40px);
+      margin-bottom: 12px;
+    }
+    .faq-section .section-intro p { color: var(--muted); max-width: 540px; margin: 0 auto; }
+
+
+    /* ============================================================
+       17. FINAL CTA
+    ============================================================ */
+    .final-cta {
+      background: var(--dark);
+      color: var(--cream);
+      text-align: center;
+      padding: 90px 24px;
+    }
+    .final-cta h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 48px);
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .final-cta p {
+      color: #99a;
+      font-size: 16px;
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+
+    /* ============================================================
+       18. FOOTER
+    ============================================================ */
+    .site-footer {
+      background: var(--dark-navy);
+      color: #aab;
+      padding: 50px 24px 30px;
+      border-top: 3px solid var(--gold);
+    }
+    .site-footer .container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+    .footer-brand h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .footer-brand p { font-size: 13px; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a { font-size: 13px; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #fff; }
+
+    .footer-bottom {
+      border-top: 1px solid #2e3a50;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-bottom p { font-size: 12px; }
+
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .hero .container,
+      .pull-quote .container,
+      .meet-michael .container,
+      .testimonial-section .container,
+      .cta-banner .container {
+        grid-template-columns: 1fr;
+      }
+      .hero-image { order: -1; max-width: 340px; margin: 0 auto; }
+      .pull-quote .container { flex-direction: column; }
+      .valuations-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .service-cards-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .process-steps::before { display: none; }
+      .site-footer .container { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .valuations-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       1. ANNOUNCEMENT BAR
+  ======================================================== -->
+  <div class="announcement-bar">
+    Free appraisal consultations available — <a href="#">Schedule yours today</a>
+  </div>
+
+
+  <!-- ========================================================
+       2. NAVIGATION
+  ======================================================== -->
+  <nav class="site-nav">
+    <div class="container">
+      <div class="nav-logo">Baseball <span>In The Attic</span></div>
+      <ul class="nav-links">
+        <li><a href="#">Appraisals</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About Michael</a></li>
+        <li><a href="#">Recent Valuations</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#" class="btn btn-dark">Get an Appraisal</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ========================================================
+       3. HERO
+  ======================================================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="section-label">Trusted Since 1990</p>
+        <h1 class="hero-heading serif-heading">
+          Independent Appraisals for Sports Collectibles &amp; Memorabilia
+        </h1>
+        <p class="hero-subtext">
+          Trusted by collectors, estates, and professional athletes for over three decades.
+          Unbiased, expert valuations — no sales agenda, ever.
+        </p>
+        <a href="#" class="btn btn-gold">Start Your Appraisal</a>
+      </div>
+      <div class="hero-image">
+        <!-- Replace with actual hero image: baseball glove / memorabilia photo -->
+        <img src="/images/hero-baseball-glove.jpg" alt="Vintage baseball glove memorabilia" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       4. MEDIA LOGOS
+  ======================================================== -->
+  <div class="media-logos">
+    <div class="container">
+      <!-- Replace with actual logo images via <img> tags -->
+      <span class="logo-item">WGN Radio</span>
+      <span class="logo-item">Los Angeles Times</span>
+      <span class="logo-item">Forbes</span>
+      <span class="logo-item">Chicago Tribune</span>
+      <span class="logo-item">NBC Sports</span>
+      <span class="logo-item">Wall Street Journal</span>
+      <span class="logo-item">Parade</span>
+      <span class="logo-item">The New York Times</span>
+    </div>
+  </div>
+
+
+  <!-- ========================================================
+       5. PULL QUOTE
+  ======================================================== -->
+  <section class="pull-quote">
+    <div class="container">
+      <div class="quote-text">
+        Respected by the baseball community, collectors, the city, and professional organizations across America — nowhere will you understand what they have, what it's worth, and why it matters.
+      </div>
+      <div class="quote-image">
+        <!-- Replace with actual vintage baseball player photo -->
+        <img src="/images/vintage-player.jpg" alt="Vintage baseball player" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       6. INDEPENDENT SPORTS CTA BAND
+  ======================================================== -->
+  <section class="sports-cta-band">
+    <h2 class="serif-heading">Independent Sports Appraisals.<br />Across All Major Sports.</h2>
+    <p>Baseball cards, memorabilia, game-used equipment, signed items — valued honestly, every time.</p>
+    <a href="#" class="btn btn-gold">Get Your Appraisal</a>
+  </section>
+
+
+  <!-- ========================================================
+       7. RECENT VALUATIONS
+  ======================================================== -->
+  <section class="recent-valuations">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="section-label">What We've Valued</p>
+          <h2 class="serif-heading">Recent Valuations</h2>
+        </div>
+        <a href="#" class="btn">View All Valuations</a>
+      </div>
+      <div class="valuations-grid">
+
+        <div class="valuation-card">
+          <img src="/images/valuation-1.jpg" alt="Babe Ruth signed baseball" />
+          <div class="valuation-card-body">
+            <h4>Babe Ruth Signed Baseball</h4>
+            <div class="val-meta">Circa 1930s · Baseball</div>
+            <div class="val-price">$42,000</div>
+          </div>
+        </div>
+
+        <div class="valuation-card">
+          <img src="/images/valuation-2.jpg" alt="T206 Honus Wagner Card" />
+          <div class="valuation-card-body">
+            <h4>T206 Honus Wagner Card</h4>
+            <div class="val-meta">1909–1911 · Trading Card</div>
+            <div class="val-price">$120,000</div>
+          </div>
+        </div>
+
+        <div class="valuation-card">
+          <img src="/images/valuation-3.jpg" alt="Lou Gehrig Game-Used Jersey" />
+          <div class="valuation-card-body">
+            <h4>Lou Gehrig Game-Used Jersey</h4>
+            <div class="val-meta">1936 · Memorabilia</div>
+            <div class="val-price">$85,000</div>
+          </div>
+        </div>
+
+        <div class="valuation-card">
+          <img src="/images/valuation-4.jpg" alt="Mickey Mantle Rookie Card" />
+          <div class="valuation-card-body">
+            <h4>Mickey Mantle Rookie Card</h4>
+            <div class="val-meta">1952 Topps · Trading Card</div>
+            <div class="val-price">$68,000</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       8. MEET MICHAEL
+  ======================================================== -->
+  <section class="meet-michael">
+    <div class="container">
+      <div class="michael-image">
+        <!-- Replace with actual photo of Michael -->
+        <img src="/images/michael-photo.jpg" alt="Michael Osacky – Sports Appraiser" />
+      </div>
+      <div class="michael-content">
+        <p class="section-label">The Expert Behind Every Appraisal</p>
+        <h2 class="serif-heading">Meet Michael, the<br />"Dean of Cracker Jack<br />Baseball Cards"</h2>
+        <p class="michael-title">— CNN, Fox News, Forbes</p>
+        <p>
+          Michael has dedicated over 30 years to the independent appraisal of sports collectibles.
+          Unlike dealers, he has no financial interest in your collection — his only job is to tell
+          you exactly what it's worth.
+        </p>
+        <p>
+          His expert opinions have been cited in courts, estates, insurance claims, and by the world's
+          leading auction houses.
+        </p>
+        <ul class="credentials">
+          <li>30+ years of appraisal experience</li>
+          <li>Expert witness — legal & estate proceedings</li>
+          <li>Featured in The New York Times, Forbes, Wall Street Journal</li>
+          <li>No conflicts of interest — ever</li>
+        </ul>
+        <a href="#" class="btn">Learn More About Michael</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       9. NO SALES MOTIVE BAND
+  ======================================================== -->
+  <section class="no-sales-band">
+    <div class="container">
+      <h2 class="serif-heading">No Sales Motive. No Consignments.<br />No Conflicts of Interest.</h2>
+      <p>Your appraisal is performed purely to establish the honest market value of your collection.</p>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       10. THREE PILLARS
+  ======================================================== -->
+  <section class="three-pillars">
+    <div class="container">
+      <div class="intro">
+        <p class="section-label">Our Approach</p>
+        <h2 class="serif-heading">Independent. Personal. Precise.</h2>
+        <p>Three principles that guide every appraisal we deliver.</p>
+      </div>
+      <div class="pillars-grid">
+
+        <div class="pillar">
+          <div class="pillar-icon">
+            <!-- Shield icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5z"/>
+            </svg>
+          </div>
+          <h3>Independent</h3>
+          <p>We never buy, sell, or consign collectibles. Our appraisals are 100% conflict-free — you get an honest valuation, nothing more.</p>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon">
+            <!-- Person icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+          </div>
+          <h3>Personal</h3>
+          <p>Every appraisal is handled directly by Michael — not outsourced, not delegated. You speak with the expert every time.</p>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon">
+            <!-- Crosshair/target icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93V18h2v1.93c-3.05-.45-5.48-2.88-5.93-5.93H9v-2H7.07C7.52 8.95 9.95 6.52 13 6.07V8h2V6.07c3.05.45 5.48 2.88 5.93 5.93H19v2h1.93c-.45 3.05-2.88 5.48-5.93 5.93V18h-2v1.93zM13 12a1 1 0 11-2 0 1 1 0 012 0z"/>
+            </svg>
+          </div>
+          <h3>Precise</h3>
+          <p>Rigorous research, authenticated comparables, and decades of market knowledge combine for valuations you can rely on.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       11. SERVICE CARDS
+  ======================================================== -->
+  <section class="service-cards">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="section-label">What We Appraise</p>
+          <h2 class="serif-heading">Expert Appraisals for Every Type of Collectible</h2>
+        </div>
+      </div>
+      <div class="service-cards-grid">
+
+        <div class="service-card">
+          <!-- Replace with actual icon image -->
+          <img class="service-icon" src="/images/icon-cards.svg" alt="" />
+          <h3>Sports Card Appraisals</h3>
+          <p>From pre-war tobacco cards to modern parallels, Michael provides definitive valuations for all eras of sports cards.</p>
+          <ul>
+            <li>Pre-war &amp; tobacco era cards (T206, T205, E-series)</li>
+            <li>Post-war vintage (Topps, Bowman, Fleer)</li>
+            <li>Rookie cards &amp; key issues</li>
+            <li>Graded vs. ungraded comparisons</li>
+            <li>Full collections &amp; estates</li>
+          </ul>
+          <a href="#" class="btn">Card Appraisals →</a>
+        </div>
+
+        <div class="service-card">
+          <!-- Replace with actual icon image -->
+          <img class="service-icon" src="/images/icon-memorabilia.svg" alt="" />
+          <h3>Sports Memorabilia Appraisals</h3>
+          <p>Game-used equipment, autographs, programs, photographs — all forms of sports memorabilia appraised with precision.</p>
+          <ul>
+            <li>Autographed balls, bats, jerseys &amp; equipment</li>
+            <li>Game-used items with provenance</li>
+            <li>Vintage photographs &amp; publications</li>
+            <li>Estate &amp; insurance appraisals</li>
+            <li>Litigation &amp; expert witness support</li>
+          </ul>
+          <a href="#" class="btn">Memorabilia Appraisals →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       12. APPRAISAL PROCESS
+  ======================================================== -->
+  <section class="appraisal-process">
+    <div class="container">
+      <div class="section-intro">
+        <p class="section-label">How It Works</p>
+        <h2 class="serif-heading">The Appraisal Process: Expert Valuations for Your Collection</h2>
+        <p>A simple, transparent process designed around your needs.</p>
+      </div>
+      <div class="process-steps">
+
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h4>Initial Consultation &amp; Photo Review</h4>
+          <p>Submit photos and details of your items for a preliminary review at no charge.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h4>In-Person or Remote Appraisal</h4>
+          <p>Michael personally examines your collection — in-person, by mail, or via video.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h4>Research &amp; Valuation</h4>
+          <p>Comparable sales, auction records, and market data are researched for each item.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h4>Formal Appraisal Report</h4>
+          <p>You receive a detailed, certified appraisal document suitable for insurance, estates, or sale.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       13. WHO WE SERVE
+  ======================================================== -->
+  <section class="who-we-serve">
+    <div class="container">
+      <div class="section-intro">
+        <p class="section-label">Who We Help</p>
+        <h2 class="serif-heading">Who We Serve: Tailored Appraisal Services for Every Collection</h2>
+        <p>Whether you're an individual collector or a large estate, we have the expertise you need.</p>
+      </div>
+      <div class="accordion" id="who-accordion">
+
+        <div class="accordion-item open">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            Estate Planning &amp; Inheritance
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Ensure sports collectibles are accurately valued for estate planning, probate, and fair distribution among heirs. Michael provides certified appraisals that hold up in legal and financial proceedings.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            High-Profile Athlete Families
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Trusted by the families of Hall of Famers and professional athletes to appraise career memorabilia, personal collections, and estate assets with discretion and accuracy.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            Equitable Divorce Agreements
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Sports collectibles are often significant marital assets. Michael's independent appraisals provide fair, court-accepted valuations to facilitate equitable divorce settlements.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            Insurance Planning &amp; Documentation
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Protect your collection with certified appraisals that satisfy insurance company requirements for scheduled personal property coverage.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            Lawyers, Professional Assistants &amp; Administrators
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Legal and financial professionals rely on Michael's expert witness testimony and certified appraisal reports in litigation, estate administration, and asset management matters.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       14. CLIENT TESTIMONIAL
+  ======================================================== -->
+  <section class="testimonial-section">
+    <div class="container">
+      <div class="testimonial-photo">
+        <!-- Replace with actual client/testimonial photo -->
+        <img src="/images/testimonial-client.jpg" alt="Satisfied client testimonial" />
+      </div>
+      <div class="testimonial-content">
+        <blockquote>
+          Michael appraised Carl's massive sports baseball memorabilia collection for me. He is thorough,
+          professional, and I found him to be extraordinarily knowledgeable. He gave us a very accurate
+          and highly professional service.
+        </blockquote>
+        <div class="testimonial-attribution">— Estate Client, Chicago, IL</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       15. CTA BANNER
+  ======================================================== -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-text">
+        <h2 class="serif-heading">Start Your Appraisal. Now and Know Your Collection's Worth!</h2>
+        <p>No sales pressure. No conflicts. Just honest, expert valuations.</p>
+      </div>
+      <div class="cta-action">
+        <a href="#" class="btn btn-gold">Get an Appraisal</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       16. FAQ
+  ======================================================== -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-intro">
+        <p class="section-label">Frequently Asked Questions</p>
+        <h2 class="serif-heading">Frequently Asked Questions</h2>
+        <p>Answers to the most common questions about our appraisal process.</p>
+      </div>
+      <div class="accordion" id="faq-accordion">
+
+        <div class="accordion-item open">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            Why is it important to get an appraisal with a collectible?
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            An accurate appraisal protects you financially — whether you're insuring, selling, donating, or passing on your collection. Without a certified appraisal, you risk being underinsured, underpaid, or under-informed about the true value of your assets.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            How long does the appraisal process take?
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Most individual item appraisals are completed within 5–10 business days. Large collections or estate appraisals may take longer depending on the scope. Michael will provide a timeline estimate during your initial consultation.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            How do you determine the value of my sports memorabilia?
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Valuations are based on recent comparable auction results, dealer sales records, market trends, condition assessment, authentication status, provenance, and Michael's 30+ years of specialized expertise.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            What is the difference between an appraiser and an auctioneer or dealer?
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            An independent appraiser like Michael has no financial stake in your collection. Dealers and auctioneers profit from buying low and selling high — creating an inherent conflict of interest. Michael's only goal is to provide you with an accurate, unbiased valuation.
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            What should I consider before getting an appraisal for my sports collectibles?
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Consider your purpose: insurance coverage, estate planning, potential sale, or simple curiosity. Gather any documentation, receipts, or provenance information you have. Take clear photographs if submitting remotely. Michael will guide you through everything during the initial consultation.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       17. FINAL CTA
+  ======================================================== -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="serif-heading">Start Your Appraisal. Now and Know Your Collection's Worth!</h2>
+      <p>Join thousands of collectors, estates, and families who trust Michael for honest, independent valuations.</p>
+      <a href="#" class="btn btn-gold">Get Your Free Consultation</a>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       18. FOOTER
+  ======================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-brand">
+        <h3>Baseball In The Attic</h3>
+        <p>
+          Independent appraisals for sports collectibles &amp; memorabilia.
+          Serving collectors, estates, attorneys, and institutions since 1990.
+          No sales. No consignments. No conflicts.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Sports Card Appraisals</a></li>
+          <li><a href="#">Memorabilia Appraisals</a></li>
+          <li><a href="#">Estate Appraisals</a></li>
+          <li><a href="#">Insurance Appraisals</a></li>
+          <li><a href="#">Expert Witness</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Michael</a></li>
+          <li><a href="#">Recent Valuations</a></li>
+          <li><a href="#">In the News</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Baseball In The Attic. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></p>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       ACCORDION JAVASCRIPT
+  ============================================================ -->
+  <script>
+    function toggleAccordion(trigger) {
+      const item = trigger.closest('.accordion-item');
+      const isOpen = item.classList.contains('open');
+
+      // Close all siblings in the same accordion
+      const accordion = item.closest('.accordion');
+      accordion.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('open'));
+
+      // Toggle current
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>
