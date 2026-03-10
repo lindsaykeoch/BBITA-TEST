@@ -1,0 +1,517 @@
+/* ═══════════════════════════════════════════════════════════
+   Baseball in the Attic – Global Elementor Styles
+   Loaded on every page when the BITA plugin is active.
+═══════════════════════════════════════════════════════════ */
+
+/* ── Design Tokens ─────────────────────────────────────── */
+:root {
+  --bita-cream:       #fffaec;
+  --bita-cream-card:  #f4efe2;
+  --bita-hero-cream:  #eae0c8;
+  --bita-dark:        #1d1f1f;
+  --bita-dark-foot:   #37393a;
+  --bita-banner-bg:   #86a9ba;
+  --bita-muted:       #d2cfc3;
+
+  --bita-f-serif:     'Merriweather', Georgia, serif;
+  --bita-f-head:      'Hoefler Text', Palatino, 'Book Antiqua', Georgia, serif;
+  --bita-f-hero:      'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+  --bita-f-btn:       'Lexend', sans-serif;
+  --bita-f-ui:        'Poppins', sans-serif;
+}
+
+/* ── Shared components ──────────────────────────────────── */
+
+.bita-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  padding: 10px 60px;
+  border: 3px solid var(--bita-dark);
+  border-radius: 37.5px;
+  background: #fff;
+  font-family: var(--bita-f-btn);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--bita-dark);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.bita-btn-pill:hover { background: var(--bita-cream-card); color: var(--bita-dark); }
+
+.bita-sec-heading {
+  font-family: var(--bita-f-head);
+  font-size: clamp(36px, 4.2vw, 80px);
+  letter-spacing: -0.03em;
+  line-height: 1.16;
+  color: var(--bita-dark);
+}
+
+.bita-sec-body {
+  font-family: var(--bita-f-serif);
+  font-size: 24px;
+  line-height: 1.83;
+  color: var(--bita-dark);
+}
+
+.bita-rule {
+  border: none;
+  border-top: 3px solid var(--bita-dark);
+  margin: 0;
+}
+
+/* ── Top Bar ────────────────────────────────────────────── */
+.bita-topbar {
+  background: var(--bita-dark);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 53px;
+  font-family: var(--bita-f-serif);
+  font-size: 16px;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  gap: 20px;
+}
+.bita-topbar em { font-style: italic; font-weight: 900; }
+.bita-topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.bita-topbar__right img { height: 26px; }
+
+/* ── Hero ───────────────────────────────────────────────── */
+.bita-hero {
+  position: relative;
+  min-height: 820px;
+  overflow: hidden;
+}
+.bita-hero__panels {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 876px;
+  display: flex;
+  gap: 20px;
+}
+.bita-hero__panel-dark  { flex: 1; background: var(--bita-dark); }
+.bita-hero__panel-cream { width: 605px; flex-shrink: 0; background: var(--bita-hero-cream); mix-blend-mode: multiply; }
+
+.bita-hero__img-wrap {
+  position: absolute;
+  right: -6%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 53%;
+  z-index: 2;
+  pointer-events: none;
+}
+.bita-hero__img-wrap img {
+  width: 100%;
+  transform: rotate(19deg);
+  filter:
+    drop-shadow(0px 8px 18px rgba(0,0,0,0.39))
+    drop-shadow(0px 33px 33px rgba(0,0,0,0.34))
+    drop-shadow(0px 75px 45px rgba(0,0,0,0.20))
+    drop-shadow(0px 134px 53px rgba(0,0,0,0.06));
+}
+
+.bita-hero__content {
+  position: relative;
+  z-index: 3;
+  padding: 60px 124px 100px;
+}
+.bita-hero__label {
+  font-family: var(--bita-f-serif);
+  font-size: 28px;
+  color: var(--bita-dark);
+  letter-spacing: -0.03em;
+  line-height: 1.83;
+}
+.bita-hero__heading-wrap {
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.bita-hero__heading {
+  font-family: var(--bita-f-hero);
+  font-size: clamp(54px, 6.1vw, 117px);
+  font-weight: 900;
+  line-height: 0.97;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  max-width: 1200px;
+}
+.bita-hero__subtext {
+  font-family: var(--bita-f-serif);
+  font-size: 28px;
+  line-height: 1.83;
+  color: var(--bita-muted);
+  max-width: 1000px;
+}
+
+/* ── Journey ────────────────────────────────────────────── */
+.bita-journey { padding: 120px 0 0; }
+.bita-journey__inner {
+  display: flex;
+  gap: 90px;
+  align-items: flex-start;
+  padding: 0 120px;
+}
+.bita-photo-col {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.bita-photo-stack {
+  position: relative;
+  width: 487px;
+  height: 600px;
+}
+.bita-photo-stack > * { position: absolute; }
+.bita-ps-bg {
+  width: 388px; height: 528px;
+  top: 0; left: 0;
+  transform: rotate(-1.77deg);
+  background: #faf6ed;
+  box-shadow: 0 0 18px rgba(0,0,0,0.25);
+}
+.bita-ps-1 {
+  width: 377px; height: 471px;
+  top: 50px; left: 11px;
+  transform: rotate(-1.51deg);
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.bita-ps-2 {
+  width: 382px; height: 464px;
+  top: 47px; left: 77px;
+  transform: rotate(0.76deg);
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.bita-ps-3 {
+  width: 348px; height: 503px;
+  top: 79px; left: 70px;
+  transform: rotate(1.06deg);
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.bita-ps-main {
+  top: 17px; left: 15px;
+  width: 378px; height: 505px;
+  transform: rotate(-1.77deg);
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+.bita-photo-name {
+  font-family: var(--bita-f-head);
+  font-size: 50px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  line-height: 1.16;
+}
+.bita-journey__text { flex: 1; }
+.bita-journey__text p + p { margin-top: 1.5em; }
+
+/* ── As Seen In ─────────────────────────────────────────── */
+.bita-seen__header {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.bita-seen__header h2 {
+  font-family: var(--bita-f-head);
+  font-size: 50px;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  line-height: 1.16;
+}
+.bita-logos-wrap {
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.bita-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.bita-logo-row img {
+  object-fit: contain;
+  flex-shrink: 0;
+  max-height: 80px;
+}
+
+/* ── Different Kind ─────────────────────────────────────── */
+.bita-diff__inner {
+  display: flex;
+  gap: 90px;
+  align-items: flex-start;
+  padding: 0 120px;
+}
+.bita-diff__text { flex: 1; }
+.bita-diff__text p + p { margin-top: 1.5em; }
+.bita-card-stack {
+  flex-shrink: 0;
+  position: relative;
+  width: 490px;
+  height: 560px;
+}
+.bita-card-stack img {
+  position: absolute;
+  width: 443px; height: 519px;
+  object-fit: cover;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.25);
+}
+.bita-card-back  { top: 19px; left: 23px; }
+.bita-card-front { top: 0; left: 0; transform: rotate(5.21deg); }
+
+/* ── Pillars ────────────────────────────────────────────── */
+.bita-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: center;
+}
+.bita-pillars__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  align-items: center;
+  text-align: center;
+  max-width: 1100px;
+}
+.bita-pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+.bita-pillar-card {
+  background: var(--bita-cream-card);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: 400px;
+}
+.bita-pillar-card h3 {
+  font-family: var(--bita-f-head);
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  line-height: 1.16;
+}
+
+/* ── Who We Work With ───────────────────────────────────── */
+.bita-who {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+}
+.bita-who__intro { text-align: center; max-width: 1348px; }
+.bita-decor-yankees {
+  position: absolute;
+  right: -60px;
+  top: -80px;
+  width: 570px;
+  z-index: 0;
+  pointer-events: none;
+}
+.bita-decor-yankees img {
+  width: 100%;
+  transform: rotate(-24deg);
+  opacity: 0.9;
+}
+.bita-who__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.bita-who__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.bita-who-card {
+  background: var(--bita-cream-card);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: 376px;
+}
+.bita-who-card h3 {
+  font-family: var(--bita-f-head);
+  font-size: 50px;
+  letter-spacing: -0.03em;
+  line-height: 1.16;
+}
+
+/* ── Ready To Talk ──────────────────────────────────────── */
+.bita-ready {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  padding: 80px 80px 120px;
+}
+.bita-ready__texture {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: luminosity;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bita-ready__texture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+.bita-ready__left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  position: relative;
+  z-index: 1;
+}
+.bita-ready__left h2 {
+  font-family: var(--bita-f-head);
+  font-size: 80px;
+  letter-spacing: -0.03em;
+  line-height: 1.16;
+  max-width: 796px;
+}
+.bita-ready__right {
+  flex: 1;
+  font-family: var(--bita-f-serif);
+  font-size: 28px;
+  line-height: 1.83;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+.bita-footer { position: relative; overflow: hidden; }
+.bita-footer__decor {
+  position: absolute;
+  left: -220px;
+  top: -180px;
+  width: 700px;
+  z-index: 0;
+  pointer-events: none;
+}
+.bita-footer__decor img {
+  width: 100%;
+  transform: rotate(-10.52deg);
+  filter:
+    drop-shadow(0px 8px 18px rgba(0,0,0,0.39))
+    drop-shadow(0px 33px 33px rgba(0,0,0,0.34))
+    drop-shadow(0px 75px 45px rgba(0,0,0,0.20));
+}
+.bita-footer__inner {
+  position: relative;
+  z-index: 1;
+  padding: 140px 192px 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 67px;
+}
+.bita-footer__brand {
+  font-family: var(--bita-f-head);
+  font-size: clamp(48px, 8vw, 128px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--bita-dark-foot);
+}
+.bita-footer__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 46px;
+}
+.bita-footer__links,
+.bita-footer__contact {
+  display: flex;
+  gap: 60px;
+  font-family: var(--bita-f-ui);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--bita-dark-foot);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.bita-footer__links a { color: var(--bita-dark-foot); text-decoration: none; }
+.bita-footer__links a:hover { text-decoration: underline; }
+.bita-footer__bar {
+  background: var(--bita-dark-foot);
+  padding: 40px 53px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  gap: 20px;
+}
+.bita-footer__bar p,
+.bita-footer__bar a {
+  font-family: var(--bita-f-ui);
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+.bita-footer__bar img { height: 26px; }
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1400px) {
+  .bita-journey__inner,
+  .bita-diff__inner { padding: 0; }
+  .bita-hero__content { padding: 60px 60px 80px; }
+  .bita-pillar-card h3 { font-size: 30px; }
+  .bita-who-card h3 { font-size: 38px; }
+  .bita-footer__inner { padding: 80px 60px 40px; }
+}
+@media (max-width: 1100px) {
+  .bita-pillars__grid { grid-template-columns: repeat(2, 1fr); }
+  .bita-who__row { grid-template-columns: repeat(2, 1fr); }
+  .bita-decor-yankees { display: none; }
+}
+@media (max-width: 900px) {
+  .bita-journey__inner,
+  .bita-diff__inner { flex-direction: column; }
+  .bita-hero__img-wrap { display: none; }
+  .bita-hero__panel-cream { display: none; }
+  .bita-pillars__grid { grid-template-columns: 1fr; }
+  .bita-who__row { grid-template-columns: 1fr; }
+  .bita-ready { flex-direction: column; padding: 60px 32px 80px; }
+  .bita-ready__left h2 { font-size: 48px; }
+  .bita-footer__inner { padding: 60px 32px 30px; }
+  .bita-footer__bar { flex-direction: column; text-align: center; }
+  .bita-topbar { flex-direction: column; text-align: center; padding: 12px 20px; }
+  .bita-photo-stack,
+  .bita-card-stack { max-width: 100%; }
+}
